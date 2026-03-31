@@ -41,7 +41,8 @@
         "post-create-project-cmd": [
             "Composer\\Config::disableProcessTimeout",
             "App\\Initializer::run",
-            "composer update --no-interaction"
+            "composer update --no-interaction",
+            "App\\Initializer::finalize"
         ]
     }
 }

@@ -87,11 +87,16 @@ abstract class Initializer
         $license[0] = sprintf("Copyright %d %s\n", date('Y'), $authorName);
         file_put_contents($licenseFile, implode("", $license));
 
-        $io->write('- Unlink initializer...');
-
-        @unlink(__FILE__);
-
         $io->write('- Done!');
+    }
+
+    public static function finalize(Event $event): void
+    {
+        $io = $event->getIO();
+        $io->write('Finalizing project...');
+
+        $io->write('- Unlink initializer...');
+        @unlink(__FILE__);
 
         $git = $io->askConfirmation('Initialize Git repository (y/N) : ', false);
 
@@ -99,6 +104,7 @@ abstract class Initializer
             $io->write('- Initialize Git repository...');
             @exec('git init');
             @exec('git add .');
+            @exec('git commit -m "Initial commit"');
         }
     }
 }
