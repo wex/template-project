@@ -10,7 +10,8 @@
     "require-dev": {
         "pestphp/pest": "^4.4",
         "laravel/pint": "^1.29",
-        "composer/composer": "^2.9"
+        "composer/composer": "^2.9",
+        "phpstan/phpstan": "^2.1"
     },
     "autoload": {
         "psr-4": {
