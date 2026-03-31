@@ -56,9 +56,6 @@ abstract class Initializer
             return $value;
         });
 
-        var_dump($vendorName, $packageName, $authorName, $authorEmail);
-        exit;
-
         $file = Factory::getComposerFile();
         $path = dirname(realpath($file));
         $json = json_decode(file_get_contents($file), true);
