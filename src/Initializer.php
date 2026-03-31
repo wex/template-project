@@ -1,6 +1,6 @@
 <?php
 
-namespace Phi;
+namespace App;
 
 use Composer\Factory;
 use Composer\Script\Event;
@@ -19,6 +19,10 @@ abstract class Initializer
         $path = dirname(realpath($file));
         $json = json_decode(file_get_contents($file), true);
 
+        $io->write('- Unset name and description...');
+        $json['name'] = '';
+        $json['description'] = '';
+
         $io->write('- Modyfing author...');
 
         $json['authors'] = [
@@ -29,23 +33,19 @@ abstract class Initializer
         ];
 
         $io->write('- Removing unnecessary dependencies...');
-
         unset($json['require-dev']['composer/composer']);
 
         $io->write('- Removing unnecessary scripts...');
-
         unset($json['scripts']['post-create-project-cmd']);
 
         $io->write('- Saving new composer.json...');
-
-        file_put_contents($file . '.new', json_encode($json, JSON_PRETTY_PRINT));
+        file_put_contents($file, json_encode($json, JSON_PRETTY_PRINT));
 
         $io->write('- Modify LICENSE...');
-
         $licenseFile = $path . DIRECTORY_SEPARATOR . 'LICENSE';
         $license = file($licenseFile);
         $license[0] = sprintf("Copyright %d %s\n", date('Y'), $authorName);
-        file_put_contents($licenseFile . '.new', implode("", $license));
+        file_put_contents($licenseFile, implode("", $license));
 
         $io->write('- Unlink initializer...');
 
