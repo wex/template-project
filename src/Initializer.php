@@ -31,22 +31,33 @@ abstract class Initializer
             if (!static::validateVendor($value)) {
                 throw new \Exception('Invalid vendor name');
             }
+
+            return $value;
         });
         $packageName = $io->askAndValidate('Package      : ', function ($value) {
             if (!static::validateVendor($value)) {
                 throw new \Exception('Invalid package name');
             }
+
+            return $value;
         });
         $authorName = $io->askAndValidate('Author name  : ', function ($value) {
             if (!static::validateName($value)) {
                 throw new \Exception('Invalid author name');
             }
+
+            return $value;
         });
         $authorEmail = $io->askAndValidate('Author email : ', function ($value) {
             if (!static::validateEmail($value)) {
                 throw new \Exception('Invalid author email');
             }
+
+            return $value;
         });
+
+        var_dump($vendorName, $packageName, $authorName, $authorEmail);
+        exit;
 
         $file = Factory::getComposerFile();
         $path = dirname(realpath($file));
