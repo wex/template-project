@@ -1,0 +1,45 @@
+{
+  "$schema": "https://getcomposer.org/schema.json",
+  "name": "phi/template-project",
+  "description": "Template project with Composer, Pest and default settings",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": "^8.4"
+  },
+  "require-dev": {
+    "pestphp/pest": "^4.4",
+    "laravel/pint": "^1.29",
+    "composer/composer": "^2.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Phi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Niko Hujanen",
+      "email": "niko.hujanen@gmail.com"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "pest",
+    "lint": "pint",
+    "post-create-project-cmd": [
+      "composer install --no-interaction --dev",
+      "Composer\\Config::disableProcessTimeout",
+      "Phi\\Initializer::run"
+    ]
+  }
+}
