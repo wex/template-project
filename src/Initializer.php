@@ -22,7 +22,7 @@ abstract class Initializer
         return strpos((string) $value, '@') !== false;
     }
 
-    public static function run(Event $event)
+    public static function run(Event $event): void
     {
         $io = $event->getIO();
         $io->write('Initializing project...');
