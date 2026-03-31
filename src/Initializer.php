@@ -9,7 +9,7 @@ abstract class Initializer
 {
     public static function validateVendor(?string $value): bool
     {
-        return (bool) preg_match('/^[a-z0-9]([_.-]?[a-z0-9]+)*$/i', (string) $value);
+        return (bool) preg_match('/^[a-z0-9]([_.-]?[a-z0-9]+)*$/', (string) $value);
     }
 
     public static function validateName(?string $value): bool
