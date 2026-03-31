@@ -1,11 +1,13 @@
-# Template project with Composer, Pest, Pint and default settings
+# Template starter project
 
-This initializes the project with the following features:
+This initializes a starter project with following features:
 - Composer
 - Pest
 - Pint
-- Default settings
+- PHPStan
+- Editorconfig
+
 
 ## Usage
 
-`composer create-project phi/template-project <target-path>` will create new `target-path` directory in current location with initialized project.
+`composer create-project phi/template-project <target-path>`
