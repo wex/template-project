@@ -100,6 +100,5 @@ abstract class Initializer
             @exec('git init');
             @exec('git add .');
         }
-
     }
 }
