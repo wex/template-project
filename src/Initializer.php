@@ -12,6 +12,8 @@ abstract class Initializer
         $io = $event->getIO();
         $io->write('Initializing project...');
 
+        while (!($vendorName = $io->ask('Vendor name: ')));
+        while (!($packageName = $io->ask('Package name: ')));
         while (!($authorName = $io->ask('Author name: ')));
         while (!($authorEmail = $io->ask('Author email: ')));
 
@@ -19,9 +21,8 @@ abstract class Initializer
         $path = dirname(realpath($file));
         $json = json_decode(file_get_contents($file), true);
 
-        $io->write('- Unset name and description...');
-        $json['name'] = '';
-        $json['description'] = '';
+        $io->write('- Set new name...');
+        $json['name'] = implode('/', [$vendorName, $packageName]);
 
         $io->write('- Modyfing author...');
 
