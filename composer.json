@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Phi\\": "src/"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {
@@ -36,13 +36,9 @@
     "scripts": {
         "test": "pest",
         "lint": "pint",
-        "post-update-cmd": [
-            "Phi\\Initializer::run"
-        ],
         "post-create-project-cmd": [
-            "composer install --no-interaction --dev",
             "Composer\\Config::disableProcessTimeout",
-            "Phi\\Initializer::run"
+            "App\\Initializer::run"
         ]
     }
 }
