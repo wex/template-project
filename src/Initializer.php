@@ -63,8 +63,10 @@ abstract class Initializer
         $io->write('- Set new name...');
         $json['name'] = implode('/', [$vendorName, $packageName]);
 
-        $io->write('- Modyfing author...');
+        $io->write('- Change type');
+        $json['type'] = 'library';
 
+        $io->write('- Modyfing author...');
         $json['authors'] = [
             [
                 'name' => $authorName,
