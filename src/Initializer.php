@@ -81,7 +81,7 @@ abstract class Initializer
         unset($json['scripts']['post-create-project-cmd']);
 
         $io->write('- Saving new composer.json...');
-        file_put_contents($file, json_encode($json, JSON_PRETTY_PRINT));
+        file_put_contents($file, json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 
         $io->write('- Modify LICENSE...');
         $licenseFile = $path . DIRECTORY_SEPARATOR . 'LICENSE';
