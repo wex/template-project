@@ -35,6 +35,11 @@
         }
     },
     "scripts": {
+        "ci": [
+            "@analyze",
+            "@lint",
+            "@test"
+        ],
         "test": "pest",
         "lint": "pint",
         "analyze": "phpstan analyze src tests",
